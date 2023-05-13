@@ -1,0 +1,25 @@
+import tweepy
+import telepot
+
+# Get the bot's token.
+TOKEN = "YOUR_BOT_TOKEN"
+
+# Create a Telegram bot object.
+bot = telepot.Bot(TOKEN)
+
+# Get the tweet link from the user.
+tweet_link = bot.message.text
+
+# Use the Twitter API to get the video URL for the tweet.
+api = tweepy.API()
+video_url = api.get_video_info(tweet_link)["video_url"]
+
+# Use the Telegram API to send the video URL to the user.
+bot.send_message(chat_id=bot.message.chat_id, text=video_url)
+
+
+
+HOW TO DEPLOY A BOT
+
+
+https://your-app-name.herokuapp.com
